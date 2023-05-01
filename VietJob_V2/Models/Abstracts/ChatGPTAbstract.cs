@@ -6,7 +6,7 @@ namespace VietJob_V2.Models.Abstracts
 {
     public class ChatGPTAbstract : ChatGPTInterface
     {
-        string request = "";
+        string request = ""; 
 
         #region private methods
         string? ChatGPTInterface.SendRequest(string request)
