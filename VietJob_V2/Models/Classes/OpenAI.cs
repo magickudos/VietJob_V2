@@ -7,7 +7,7 @@ namespace VietJob_V2.Models.Classes
 {
     public class OpenAi
     {
-        private readonly OpenAIAPI _api = new OpenAIAPI("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");
+        private readonly OpenAIAPI _api = new OpenAIAPI("YOUR_API_KEY");
 
         public async Task<string> MakeConversation(string question)
         {
