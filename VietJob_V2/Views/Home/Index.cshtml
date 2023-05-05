@@ -1,532 +1,457 @@
-﻿<div class="app-content content">
-    <div class="content-wrapper">
-        <div class="content-wrapper-before"></div>
-        <div class="content-header row">
+﻿<div class="app-content content" id="content" data-get-matching="@Url.Action("GetMatching", "Home")"
+     data-ng-controller="contentController">
+<div class="content-wrapper">
+<div class="content-wrapper-before"></div>
+<div class="content-header row">
+</div>
+<div class="content-body">
+<!-- Revenue, Hit Rate & Deals -->
+<section class="maxlength" id="maxlength">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Nhập thông tin về ứng viên và công việc</h4>
+                    <a class="heading-elements-toggle">
+                        <i class="la la-ellipsis-v font-medium-3"></i>
+                    </a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li>
+                                <button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink" onclick="analyze()">Phân tích mức độ đáp ứng</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-12">
+                                <fieldset class="mb-1">
+                                    <p class="text-muted">Mô tả kỹ năng ứng viên</p>
+                                    <div class="form-group">
+                                        <textarea name="maxlength-textarea" class="form-control textarea-maxlength" id="cv" placeholder="Nhập tối đa 1400 ký tự..." maxlength="1400" rows="10"></textarea>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-6 col-lg-12">
+                                <fieldset class="mb-1">
+                                    <p class="text-muted">Mô tả yêu cầu công việc</p>
+                                    <div class="form-group">
+                                        <textarea name="maxlength-textarea" class="form-control textarea-maxlength" id="jd" placeholder="Nhập tối đa 1400 ký tự..." maxlength="1400" rows="10"></textarea>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content-body">
-            <!-- Revenue, Hit Rate & Deals -->
-            <div class="row">
-                <div class="col-lg-3 col-md-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card pull-up bg-gradient-directional-danger">
-                                <div class="card-header bg-hexagons-danger">
-                                    <h4 class="card-title white">Analytics</h4>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                </div>
-                                <div class="card-content collapse show bg-hexagons-danger">
-                                    <div class="card-body">
-                                        <div class="media d-flex">
-                                            <div class="align-self-center width-100">
-                                                <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
-                                            </div>
-                                            <div class="media-body text-right mt-1">
-                                                <h3 class="font-large-2 white">12,515</h3>
-                                                <h6 class="mt-1"><span class="text-muted white">Analytics in the </span></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    </div>
+</section>
+
+<div id="matchContent" style="display: none">
+<div class="row">
+    <div class="col-lg-3 col-md-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="card pull-up bg-gradient-directional-danger">
+                    <div class="card-header bg-hexagons-danger">
+                        <h4 class="card-title white">Kết quả tổng hợp</h4>
+                        <a class="heading-elements-toggle">
+                            <i class="la la-ellipsis-v font-medium-3"></i>
+                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card pull-up">
-                                <div class="card-header">
-                                    <h4 class="card-title float-left">Project X</h4><a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                    <span class="badge badge-pill badge-info float-right m-0">In Progress</span>
+                    <div class="card-content collapse show bg-hexagons-danger" style="margin-top: -17px">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center width-100">
+                                    <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
                                 </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body pt-0 pb-1">
-                                        <h6 class="text-muted font-small-3"> Completed Task : 4/10</h6>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="media d-flex">
-                                            <div class="align-self-center">
-                                                <h6 class="text-bold-600 mt-2"> Client: <span class="info">Xeon Inc.</span></h6>
-                                                <h6 class="text-bold-600 mt-1"> Deadline: <span class="blue-grey">5th June, 2018</span></h6>
-                                            </div>
-                                            <div class="media-body text-right mt-2">
-                                                <ul class="list-unstyled users-list">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-18.png" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card pull-up">
-                                <div class="card-header">
-                                    <h4 class="card-title float-left">Project X</h4><a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                    <span class="badge badge-pill badge-info float-right m-0">In Progress</span>
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body pt-0 pb-1">
-                                        <h6 class="text-muted font-small-3"> Completed Task : 4/10</h6>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="media d-flex">
-                                            <div class="align-self-center">
-                                                <h6 class="text-bold-600 mt-2"> Client: <span class="info">Xeon Inc.</span></h6>
-                                                <h6 class="text-bold-600 mt-1"> Deadline: <span class="blue-grey">5th June, 2018</span></h6>
-                                            </div>
-                                            <div class="media-body text-right mt-2">
-                                                <ul class="list-unstyled users-list">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-18.png" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card pull-up">
-                                <div class="card-header">
-                                    <h4 class="card-title float-left">Project X</h4><a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                    <span class="badge badge-pill badge-info float-right m-0">In Progress</span>
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body pt-0 pb-1">
-                                        <h6 class="text-muted font-small-3"> Completed Task : 4/10</h6>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="media d-flex">
-                                            <div class="align-self-center">
-                                                <h6 class="text-bold-600 mt-2"> Client: <span class="info">Xeon Inc.</span></h6>
-                                                <h6 class="text-bold-600 mt-1"> Deadline: <span class="blue-grey">5th June, 2018</span></h6>
-                                            </div>
-                                            <div class="media-body text-right mt-2">
-                                                <ul class="list-unstyled users-list">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-18.png" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="media-body text-right mt-1">
+                                    <h3 class="font-large-2 white" id="">{{matching.totalScore}}%</h3>
+                                    <h6 class="mt-1">
+                                        <span ng-if="matching.totalScore < 50" class="text-muted white">Ứng viên chưa phù hợp</span>
+                                        <span ng-if="matching.totalScore >= 50 && matching.totalScore < 80" class="text-muted white">Ứng viên khá phù hợp</span>
+                                        <span ng-if="matching.totalScore >= 80" class="text-muted white">Ứng viên rất phù hợp</span>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--/ Revenue, Hit Rate & Deals -->
-            <!-- Emails Products & Avg Deals -->
-            
-            <!--/ Emails Products & Avg Deals -->
-            <!-- Chat and Recent Projects -->
-            <div class="row match-height">
-                <div class="col-xl-4 col-lg-6 col-md-12">
-                    <div class="card card-transparent">
-                        <div class="card-header bg-transparent pl-0">
-                            <h5 class="card-title text-bold-700">Project Income</h5>
-                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                        </div>
-                        <div class="card-content">
-                            <div id="project-income-chart" class="height-450 BarChartShadow"></div>
-                        </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="card pull-up">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">Kỹ năng mềm</h4>
+                        <a class="heading-elements-toggle">
+                            <i class="la la-ellipsis-v font-medium-3"></i>
+                        </a>
+                        <span ng-if="matching.softskillKeywords.score < 50" class="badge badge-pill badge-danger float-right m-0">Chưa phù hợp</span>
+                        <span ng-if="matching.softskillKeywords.score >= 50 && matching.softskillKeywords.score < 80" class="badge badge-pill badge-warning float-right m-0">Khá phù hợp</span>
+                        <span ng-if="matching.softskillKeywords.score >= 80" class="badge badge-pill badge-info float-right m-0">Rất phù hợp</span>
                     </div>
-                </div>
-                <div class="col-xl-8 col-lg-6 col-md-12">
-                    <h5 class="card-title text-bold-700 my-2">Recent Projects</h5>
-                    <div class="card">
-                        <div class="card-content">
-                            <div id="recent-projects" class="media-list position-relative">
-                                <div class="table-responsive">
-                                    <table class="table table-padded table-xl mb-0" id="recent-project-table">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0">Project Name</th>
-                                                <th class="border-top-0">Assigned to</th>
-                                                <th class="border-top-0">Deadline</th>
-                                                <th class="border-top-0">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-truncate align-middle">
-                                                    <a href="#">X Admin</a>
-                                                </td>
-                                                <td class="text-truncate">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-18.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                        </li>
-                                                        <li class="avatar avatar-sm">
-                                                            <span class="badge badge-info">+2 more</span>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate pb-0">
-                                                    <span>15th July, 2018</span>
-                                                    <p class="font-small-2 text-muted"> 1 day left</p>
-                                                </td>
-                                                <td>
-                                                    <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                        <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate align-middle">
-                                                    <a href="#">Analytics UI</a>
-                                                </td>
-                                                <td class="text-truncate">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-14.png" alt="Avatar">
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate pb-0">
-                                                    <span>26th May, 2018</span>
-                                                    <p class="font-small-2 text-muted danger"> behind</p>
-                                                </td>
-                                                <td>
-                                                    <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                        <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate align-middle">
-                                                    <a href="#">Traveltrip</a>
-                                                </td>
-                                                <td class="text-truncate">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate pb-0">
-                                                    <span>23rd May, 2018</span>
-                                                    <p class="font-small-2 text-muted"> in 11 Days</p>
-                                                </td>
-                                                <td>
-                                                    <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                        <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate align-middle">
-                                                    <a href="#">Apex Angular</a>
-                                                </td>
-                                                <td class="text-truncate">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-18.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                        </li>
-                                                        <li class="avatar avatar-sm">
-                                                            <span class="badge badge-info">+1 more</span>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate pb-0">
-                                                    <span>13th May, 2018</span>
-                                                    <p class="font-small-2 text-muted"> 1 month</p>
-                                                </td>
-                                                <td>
-                                                    <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                        <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate align-middle">
-                                                    <a href="#">Chameleon Admin</a>
-                                                </td>
-                                                <td class="text-truncate">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-11.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-12.png" alt="Avatar">
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate pb-0">
-                                                    <span>18th July, 2018</span>
-                                                    <p class="font-small-2 text-muted danger"> behind</p>
-                                                </td>
-                                                <td>
-                                                    <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                        <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                    <div class="card-content collapse show">
+                        <div class="card-body pt-0 pb-1">
+                            <h6 class="text-muted font-small-3" id="sScore" value="{{matching.softskillKeywords.score}}"> Tỷ lệ đáp ứng : {{matching.softskillKeywords.score}}%</h6>
+                            <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                <div ng-if="matching.softskillKeywords.score < 50" class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: {{matching.softskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div ng-if="matching.softskillKeywords.score >= 50 && matching.softskillKeywords.score < 80" class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: {{matching.softskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div ng-if="matching.softskillKeywords.score >= 80" class="progress-bar bg-gradient-x-info" role="progressbar" style="width: {{matching.softskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <p></p>
+                                    <div class="badge badge-info">Yêu cầu {{matching.softskillKeywords.skills.length}} kỹ năng</div>
+                                    <div class="badge badge-primary">Đáp ứng {{matching.softskillKeywords.skillGood}} kỹ năng</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--/ Products sell and New Orders -->
-            <!-- Total earning & Recent Sales  -->
-            <div class="row mt-1">
-                <div class="col-md-12 col-lg-6 col-xl-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">New Projects</h4>
-                            <a class="heading-elements-toggle">
-                                <i class="la la-ellipsis-v font-medium-3"></i>
-                            </a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li>
-                                        <a data-action="reload">
-                                            <i class="ft-rotate-cw"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-content mt-1">
-                            <div id="new-projects" class="height-400 GradientlineShadow"></div>
-                        </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="card pull-up">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">Kỹ năng cứng</h4>
+                        <a class="heading-elements-toggle">
+                            <i class="la la-ellipsis-v font-medium-3"></i>
+                        </a>
+                        <span ng-if="matching.hardskillKeywords.score < 50" class="badge badge-pill badge-danger float-right m-0">Chưa phù hợp</span>
+                        <span ng-if="matching.hardskillKeywords.score >= 50 && matching.hardskillKeywords.score < 80" class="badge badge-pill badge-warning float-right m-0">Khá phù hợp</span>
+                        <span ng-if="matching.hardskillKeywords.score >= 80" class="badge badge-pill badge-info float-right m-0">Rất phù hợp</span>
                     </div>
-                </div>
-                <div class="col-md-12 col-lg-6 col-xl-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Chat</h4>
-                            <a class="heading-elements-toggle">
-                                <i class="la la-ellipsis-v font-medium-3"></i>
-                            </a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li>
-                                        <a data-action="reload">
-                                            <i class="ft-rotate-cw"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <div class="card-content collapse show">
+                        <div class="card-body pt-0 pb-1">
+                            <h6 class="text-muted font-small-3" id="hScore" value="{{matching.hardskillKeywords.score}}"> Tỷ lệ đáp ứng : {{matching.hardskillKeywords.score}}%</h6>
+                            <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                <div ng-if="matching.hardskillKeywords.score < 50" class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: {{matching.hardskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div ng-if="matching.hardskillKeywords.score >= 50 && matching.hardskillKeywords.score < 80" class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: {{matching.hardskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div ng-if="matching.hardskillKeywords.score >= 80" class="progress-bar bg-gradient-x-info" role="progressbar" style="width: {{matching.hardskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body chat-application">
-                                <div class="chats height-300">
-                                    <div class="chats">
-                                        <div class="chat">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>How can we help? We're here for you!</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat chat-left">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>Hey Jacob, Could you please help me to find it out?</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>Absolutely!</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat chat-left">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>I am looking for the best Angular admin template.</p>
-                                                    <p>It should be Bootstrap 4 compatible.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>Crest admin is the responsive Angular 5 bootstrap 4 admin template.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat chat-left">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>Looks clean and fresh UI.</p>
-                                                </div>
-                                                <div class="chat-content">
-                                                    <p>It's perfect for my next project.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>Thanks a lot!</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat chat-left">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>How can I purchase it?</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                    <img src="../../Content/kendoui/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>From Wrapbootstrap.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat chat-left">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                    <img src="kendoui/app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>I will purchase it for sure.</p>
-                                                </div>
-                                                <div class="chat-content">
-                                                    <p>Thanks.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat">
-                                            <div class="chat-avatar">
-                                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                    <img src="kendoui/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avatar" />
-                                                </a>
-                                            </div>
-                                            <div class="chat-body">
-                                                <div class="chat-content">
-                                                    <p>Great!!</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <p></p>
+                                    <div class="badge badge-info">Yêu cầu {{matching.hardskillKeywords.skills.length}} kỹ năng</div>
+                                    <div class="badge badge-primary">Đáp ứng {{matching.hardskillKeywords.skillGood}} kỹ năng</div>
                                 </div>
-                                <form class="chat-app-input mt-1 row">
-                                    <div class="col-12">
-                                        <fieldset>
-                                            <div class="input-group position-relative has-icon-left">
-                                                <div class="form-control-position">
-                                                    <span id="basic-addon3"><i class="ft-image"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Send message" aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-primary" type="button">Send</button>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--/ Total earning & Recent Sales  -->
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="card pull-up">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">Kỹ năng khác</h4>
+                        <a class="heading-elements-toggle">
+                            <i class="la la-ellipsis-v font-medium-3"></i>
+                        </a>
+                        <span ng-if="matching.otherskillKeywords.score < 50" class="badge badge-pill badge-danger float-right m-0">Chưa phù hợp</span>
+                        <span ng-if="matching.otherskillKeywords.score >= 50 && matching.otherskillKeywords.score < 80" class="badge badge-pill badge-warning float-right m-0">Khá phù hợp</span>
+                        <span ng-if="matching.otherskillKeywords.score >= 80" class="badge badge-pill badge-info float-right m-0">Rất phù hợp</span>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body pt-0 pb-1">
+                            <h6 class="text-muted font-small-3" id="oScore" value="{{matching.otherskillKeywords.score}}"> Tỷ lệ đáp ứng : {{matching.otherskillKeywords.score}}%</h6>
+                            <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                                <div ng-if="matching.otherskillKeywords.score < 50" class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: {{matching.otherskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div ng-if="matching.otherskillKeywords.score >= 50 && matching.otherskillKeywords.score < 80" class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: {{matching.otherskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div ng-if="matching.otherskillKeywords.score >= 80" class="progress-bar bg-gradient-x-info" role="progressbar" style="width: {{matching.otherskillKeywords.score}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <p></p>
+                                    <div class="badge badge-info">Yêu cầu {{matching.otherskillKeywords.skills.length}} kỹ năng</div>
+                                    <div class="badge badge-primary">Đáp ứng {{matching.otherskillKeywords.skillGood}} kỹ năng</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Mô tả công việc</h4>
+            </div>
+            <div class="card-content">
+                <div id="recent-projects" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table class="table table-padded table-xl mb-0" id="recent-project-table">
+                            <thead>
+                            <tr>
+                                <th class="border-top-0">Yêu cầu kỹ năng</th>
+                                <th class="border-top-0" style="text-align: center">Số lần xuất hiện</th>
+                                <th class="border-top-0" style="text-align: center">Mức độ chuyên môn</th>
+                                <th class="border-top-0" style="text-align: center">Nhóm kỹ năng</th>
+                                <th class="border-top-0" style="text-align: left">Mô tả yêu cầu</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-ng-repeat="item in matching.softskillKeywords.skills">
+                                <td class="text-truncate align-middle">
+                                    <a href="#">{{item.keyword}}</a>
+                                    <span ng-if="item.qualification == 'high'" class="badge badge-pill badge-danger float-right m-0">Quan trọng</span>
+                                    @* <span ng-if="item.occurrences >= 3" class="badge badge-pill badge-warning float-right m-0">Xuất hiện nhiều</span> *@
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">{{item.occurrences}}</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">{{item.qualification}}</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">Kỹ năng mềm</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: left">
+                                    <a href="#">{{item.description}}</a>
+                                </td>
+                            </tr>
+                            <tr data-ng-repeat="item in matching.hardskillKeywords.skills">
+                                <td class="text-truncate align-middle">
+                                    <a href="#">{{item.keyword}}</a>
+                                    <span ng-if="item.qualification == 'high'" class="badge badge-pill badge-danger float-right m-0">Quan trọng</span>
+                                    @* <span ng-if="item.occurrences >= 3" class="badge badge-pill badge-warning float-right m-0">Xuất hiện nhiều</span> *@
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">{{item.occurrences}}</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">{{item.qualification}}</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">Kỹ năng cứng</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: left">
+                                    <a href="#">{{item.description}}</a>
+                                </td>
+                            </tr>
+                            <tr data-ng-repeat="item in matching.otherskillKeywords.skills">
+                                <td class="text-truncate align-middle">
+                                    <a href="#">{{item.keyword}}</a>
+                                    <span ng-if="item.qualification == 'high'" class="badge badge-pill badge-danger float-right m-0">Quan trọng</span>
+                                    @* <span ng-if="item.occurrences >= 3" class="badge badge-pill badge-warning float-right m-0">Xuất hiện nhiều</span> *@
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">{{item.occurrences}}</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">{{item.qualification}}</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: center">
+                                    <a href="#">Kỹ năng khác</a>
+                                </td>
+                                <td class="text-truncate align-middle" style="text-align: left">
+                                    <a href="#">{{item.description}}</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Mức độ đáp ứng của ứng viên</h4>
+    </div>
+    <div class="card-content">
+        <div class="row match-height">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div id="recent-projects" class="media-list position-relative">
+                            <div class="table-responsive">
+                                <table class="table table-padded table-xl mb-0" id="recent-project-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="border-top-0">Yêu cầu kỹ năng</th>
+                                        <th class="border-top-0">Nhóm kỹ năng</th>
+                                        <th class="border-top-0" style="text-align: center">Khả năng đáp ứng</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr data-ng-repeat="item in matching.softskillKeywords.skills">
+                                        <td class="text-truncate align-middle">
+                                            <a href="#">{{item.keyword}}</a>
+                                            <span ng-if="item.qualification == 'High'" class="badge badge-pill badge-danger float-right m-0">Quan trọng</span>
+                                        </td>
+                                        <td class="text-truncate align-middle">
+                                            <a href="#">Kỹ năng mềm</a>
+                                        </td>
+                                        <td class="text-truncate">
+                                            <ul ng-if="item.existed" class="list-unstyled users-list m-0" style="text-align: center; color: green">
+                                                <i class="ft-check"></i>
+                                            </ul>
+                                            <ul ng-if="!item.existed" class="list-unstyled users-list m-0" style="text-align: center; color: red">
+                                                <i class="ft-x"></i>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr data-ng-repeat="item in matching.hardskillKeywords.skills">
+                                        <td class="text-truncate align-middle">
+                                            <a href="#">{{item.keyword}}</a>
+                                            <span ng-if="item.qualification == 'High'" class="badge badge-pill badge-danger float-right m-0">Quan trọng</span>
+                                        </td>
+                                        <td class="text-truncate align-middle">
+                                            <a href="#">Kỹ năng cứng</a>
+                                        </td>
+                                        <td class="text-truncate">
+                                            <ul ng-if="item.existed" class="list-unstyled users-list m-0" style="text-align: center; color: green">
+                                                <i class="ft-check"></i>
+                                            </ul>
+                                            <ul ng-if="!item.existed" class="list-unstyled users-list m-0" style="text-align: center; color: red">
+                                                <i class="ft-x"></i>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr data-ng-repeat="item in matching.otherskillKeywords.skills">
+                                        <td class="text-truncate align-middle">
+                                            <a href="#">{{item.keyword}}</a>
+                                            <span ng-if="item.qualification == 'High'" class="badge badge-pill badge-danger float-right m-0">Quan trọng</span>
+                                        </td>
+                                        <td class="text-truncate align-middle">
+                                            <a href="#">Kỹ năng khác</a>
+                                        </td>
+                                        <td class="text-truncate">
+                                            <ul ng-if="item.existed" class="list-unstyled users-list m-0" style="text-align: center; color: green">
+                                                <i class="ft-check"></i>
+                                            </ul>
+                                            <ul ng-if="!item.existed" class="list-unstyled users-list m-0" style="text-align: center; color: red">
+                                                <i class="ft-x"></i>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Biểu đồ</h4>
+                            <a class="heading-elements-toggle">
+                                <i class="la la-ellipsis-v font-medium-3"></i>
+                            </a>
+                            <div class="card-content collapse show">
+                                                                <div class="card-body">
+                                                                    <div id="stacked-bar1" class="height-400"></div>
+                                                                </div>
+                                                            </div>
+                        </div>*@
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <div id="stacked-bar1" class="height-400"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Các kỹ năng chưa đáp ứng</h4>
+                    </div>
+                    <div class="card-content">
+                        <span data-ng-repeat="missingkeyword in matching.softskillKeywords.skills" ng-if="!missingkeyword.existed" class="badge badge-pill badge-danger float-center m-0">
+                            {{missingkeyword.keyword}}
+                        </span>
+                        <span data-ng-repeat="missingkeyword in matching.hardskillKeywords.skills" ng-if="!missingkeyword.existed" class="badge badge-pill badge-danger float-center m-0">
+                            {{missingkeyword.keyword}}
+                        </span>
+                        <span data-ng-repeat="missingkeyword in matching.otherskillKeywords.skills" ng-if="!missingkeyword.existed" class="badge badge-pill badge-danger float-center m-0">
+                            {{missingkeyword.keyword}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+    function showMatchingChart (soft, hard, other) {
+         var stackedBar1 = new Chartist.Bar('#stacked-bar1', {
+            labels: ['Mềm','Cứng','Khác'],
+            series: [
+            [soft, hard, other],
+            [100-soft, 100-hard, 100-other]
+            ]
+        }, {
+            stackBars: true,
+            fullWidth: true,
+            axisX: {
+                showGrid: false,
+            },
+            axisY: {
+                showGrid: false,
+                showLabel: false,
+                offset: 0
+            },
+            
+        });
+         stackedBar1.on('draw', function (data) {
+            if (data.type === 'bar') {
+                data.element.attr({
+                    style: 'stroke-width: 30px',
+                    x1: data.x1 + 0.001
+                });
+                
+            }
+            else if (data.type === 'label') {
+                data.element.attr({
+                    y: 20
+                })
+            }
+        });
+         stackedBar1.on('created', function (data) {
+            var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
+            defs.elem('linearGradient', {
+                id: 'stackedBarGradient',
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+            }).elem('stop', {
+                offset: 0,
+                'stop-color': 'rgba(253,99,107,1)'
+            }).parent().elem('stop', {
+                offset: 1,
+                'stop-color': 'rgba(253,99,107, 1)'
+            });
+            return defs;
+        });
+    };
+    </script>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/apps/index.js")
+}
